@@ -1,0 +1,5 @@
+.vs/
+*.suo
+WPFMarket/obj/*
+WPFMarket/bin/*
+*.user
