@@ -24,7 +24,7 @@ namespace WPFMarket.ViewModels.Pages
         private void InitializeViewModel()
         {
             CurrentTheme = ApplicationThemeManager.GetAppTheme();
-            AppVersion = $"UiDesktopApp1 - {GetAssemblyVersion()}";
+            AppVersion = $"WPFMarket - {GetAssemblyVersion()}";
 
             _isInitialized = true;
         }
