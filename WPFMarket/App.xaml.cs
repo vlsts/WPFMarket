@@ -10,6 +10,12 @@ using WPFMarket.ViewModels.Pages;
 using WPFMarket.ViewModels.Windows;
 using WPFMarket.Views.Pages;
 using WPFMarket.Views.Windows;
+using dotenv.net;
+using WPFMarket.Models.Database;
+using Microsoft.EntityFrameworkCore;
+using WPFMarket.Views.Pages.Admin;
+using WPFMarket.Views.Pages.Operator;
+using WPFMarket.Views.Pages.Cashier;
 
 namespace WPFMarket
 {
@@ -46,12 +52,23 @@ namespace WPFMarket
                 services.AddSingleton<INavigationWindow, MainWindow>();
                 services.AddSingleton<MainWindowViewModel>();
 
-                services.AddSingleton<DashboardPage>();
-                services.AddSingleton<DashboardViewModel>();
-                services.AddSingleton<DataPage>();
-                services.AddSingleton<DataViewModel>();
+                // Settings page
                 services.AddSingleton<SettingsPage>();
                 services.AddSingleton<SettingsViewModel>();
+
+                // Operator page + subpages
+                services.AddSingleton<OperatorPage>();
+                services.AddSingleton<OperatorViewModel>();
+                
+                // Admin page + subpages
+                services.AddSingleton<AdminPage>();
+                services.AddSingleton<AdminViewModel>();
+
+                // Cashier page + subpages
+                services.AddSingleton<CashierPage>();
+                services.AddSingleton<CashierViewModel>();
+
+                services.AddDbContext<SupermarketContext>();
             }).Build();
 
         /// <summary>
@@ -71,6 +88,11 @@ namespace WPFMarket
         private void OnStartup(object sender, StartupEventArgs e)
         {
             _host.Start();
+            DotEnv.Load();
+
+            var dbContext = _host.Services.GetRequiredService<SupermarketContext>();
+            //dbContext.Database.EnsureCreated();
+            dbContext.Database.Migrate();
         }
 
         /// <summary>

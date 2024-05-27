@@ -3,3 +3,4 @@
 WPFMarket/obj/*
 WPFMarket/bin/*
 *.user
+*.env
