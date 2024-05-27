@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System.Net.NetworkInformation;
 
 #nullable disable
 
@@ -25,7 +24,7 @@ namespace WPFMarket.Models.Database.Migrations
                         name,
                         totp_secret_key
                     FROM
-                        ""Users""
+                        users
                     WHERE
                         id = admin_id
                     AND

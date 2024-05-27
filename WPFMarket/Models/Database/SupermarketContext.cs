@@ -12,6 +12,14 @@ namespace WPFMarket.Models.Database
     internal class SupermarketContext : DbContext
     {
         public DbSet<UserEntity> Users { get; set; }
+        public DbSet<ProducerEntity> Producers { get; set; }
+        public DbSet<CategoryEntity> Categories { get; set; }
+        public DbSet<LoyaltyCardEntity> LoyaltyCards { get; set; }
+        public DbSet<StockEntity> Stocks { get; set; }
+        public DbSet<ProductEntity> Products { get; set; }
+        public DbSet<ReceiptDiscountEntity> ReceiptDiscounts { get; set; }
+        public DbSet<ReceiptEntity> Receipts { get; set; }
+        public DbSet<ReceiptItemEntity> ReceiptItems { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
