@@ -6,29 +6,47 @@ namespace WPFMarket.ViewModels.Windows
     public partial class MainWindowViewModel : ObservableObject
     {
         [ObservableProperty]
-        private string _applicationTitle = "WPF UI - WPFMarket";
+        private string _applicationTitle = "WPFMarket";
 
         [ObservableProperty]
-        private ObservableCollection<object> _menuItems = new()
+        private ObservableCollection<NavigationViewItem> _menuItems = new()
         {
-            new NavigationViewItem()
+            new()
             {
-                Content = "Home",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.Home24 },
-                TargetPageType = typeof(Views.Pages.DashboardPage)
+                Content = "Admin",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.HomePerson24 },
+                TargetPageType = typeof(Views.Pages.Admin.AdminPage),
+                MenuItemsSource = new ObservableCollection<NavigationViewItem>{
+                    //new()
+                    //{
+                    //    Content = "Data",
+                    //    Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
+                    //    TargetPageType = typeof(Views.Pages.DataPage)
+                    //}
+                }
+
             },
-            new NavigationViewItem()
+            new()
             {
-                Content = "Data",
-                Icon = new SymbolIcon { Symbol = SymbolRegular.DataHistogram24 },
-                TargetPageType = typeof(Views.Pages.DataPage)
-            }
+                Content = "Cashier",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.PeopleMoney24 },
+                TargetPageType = typeof(Views.Pages.Cashier.CashierPage),
+                MenuItemsSource = new ObservableCollection<NavigationViewItem>{
+                }
+
+            },
         };
 
         [ObservableProperty]
-        private ObservableCollection<object> _footerMenuItems = new()
+        private ObservableCollection<NavigationViewItem> _footerMenuItems = new()
         {
-            new NavigationViewItem()
+            new()
+            {
+                Content = "Operator",
+                Icon = new SymbolIcon { Symbol = SymbolRegular.DatabasePerson24 },
+                TargetPageType = typeof(Views.Pages.Operator.OperatorPage)
+            },
+            new()
             {
                 Content = "Settings",
                 Icon = new SymbolIcon { Symbol = SymbolRegular.Settings24 },
